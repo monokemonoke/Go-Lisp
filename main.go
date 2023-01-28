@@ -4,6 +4,8 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+
+	golisp "github.com/monokemonoke/go-lisp/go-lisp"
 )
 
 func main() {
@@ -16,6 +18,14 @@ func main() {
 		}
 		program := scanner.Text()
 
-		fmt.Println(program)
+		fmt.Println(
+			golisp.Eval(
+				golisp.Parse(
+					golisp.Read(
+						program,
+					),
+				),
+			),
+		)
 	}
 }
