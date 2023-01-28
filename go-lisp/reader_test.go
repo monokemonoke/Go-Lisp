@@ -9,9 +9,9 @@ func TestRead(t *testing.T) {
 		expect []string
 	}{
 		{
-			desc:   "basic test case 1",
-			src:    "Hello",
-			expect: []string{"Hello"},
+			desc:   "basic test case 2",
+			src:    "(+ 1 2)",
+			expect: []string{"(", "+", "1", "2", ")"},
 		},
 	}
 
@@ -25,7 +25,7 @@ func TestRead(t *testing.T) {
 
 			for i := range actual {
 				if tC.expect[i] != actual[i] {
-					t.Errorf("want %+v but got %+v\n", tC.expect, actual)
+					t.Errorf("want %+v but got %+v\n", tC.expect[i], actual[i])
 				}
 			}
 		})
