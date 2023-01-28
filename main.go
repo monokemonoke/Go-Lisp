@@ -11,7 +11,9 @@ func main() {
 
 	for {
 		fmt.Printf("> ")
-		scanner.Scan()
+		if ok := scanner.Scan(); !ok {
+			break
+		}
 		program := scanner.Text()
 
 		fmt.Println(program)
