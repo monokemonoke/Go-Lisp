@@ -12,7 +12,7 @@ func TestParser(t *testing.T) {
 	}{
 		{
 			desc:   "basic add",
-			src:    []string{"(", "+", "1", "1", ")"},
+			src:    Read("(+ 1 1)"),
 			expect: &astExpression{operand: "+", args: []string{"1", "1"}},
 		},
 	}
