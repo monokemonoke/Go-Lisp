@@ -15,6 +15,11 @@ func TestParser(t *testing.T) {
 			src:    Read("(+ 1 1)"),
 			expect: &astExpression{operand: "+", args: []string{"1", "1"}},
 		},
+		{
+			desc:   "basic add",
+			src:    Read("(+ 1 (- 3 2))"),
+			expect: &astExpression{operand: "+", args: []string{"1", "1"}},
+		},
 	}
 
 	for _, tC := range testCases {
@@ -33,6 +38,11 @@ func TestParser(t *testing.T) {
 			if tC.expect.(*astExpression).operand != actualExpression.operand {
 				t.Errorf("want %s but got %s\n",
 					tC.expect.(*astExpression).operand, actualExpression.operand)
+			}
+
+			if len(tC.expect.(*astExpression).args) != len(actualExpression.args) {
+				t.Errorf("want %d but got %d\n",
+					len(tC.expect.(*astExpression).args), len(actualExpression.args))
 			}
 		})
 	}
