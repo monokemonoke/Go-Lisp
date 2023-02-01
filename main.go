@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"os"
 
-	golisp "github.com/monokemonoke/go-lisp/go-lisp"
+	"github.com/monokemonoke/go-lisp/go-lisp/reader"
 )
 
 func main() {
@@ -18,14 +18,8 @@ func main() {
 		}
 		program := scanner.Text()
 
-		fmt.Println(
-			golisp.Eval(
-				golisp.Parse(
-					golisp.Read(
-						program,
-					),
-				),
-			),
-		)
+		tokens := reader.NewReader(program).Read()
+
+		fmt.Printf("%#v\n", tokens)
 	}
 }
