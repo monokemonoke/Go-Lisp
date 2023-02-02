@@ -21,13 +21,9 @@ func main() {
 		program := scanner.Text()
 
 		tokens := reader.NewReader(program).Read()
-		fmt.Printf("tokens\n")
-		fmt.Printf("%#v\n", tokens)
 
 		p := parser.NewParser(tokens)
 		asts := p.Parse()
-		fmt.Printf("asts\n")
-		fmt.Printf("%#v\n", asts)
 
 		res := evaluator.Eval(asts)
 		fmt.Printf("%#v\n", res)
