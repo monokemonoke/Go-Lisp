@@ -24,3 +24,23 @@ func minus(args []any) any {
 	}
 	return x
 }
+
+func multi(args []any) any {
+	x, _ := strconv.Atoi(args[0].(reader.Token).String())
+
+	for _, arg := range args[1:] {
+		y, _ := strconv.Atoi(arg.(reader.Token).String())
+		x *= y
+	}
+	return x
+}
+
+func div(args []any) any {
+	x, _ := strconv.Atoi(args[0].(reader.Token).String())
+
+	for _, arg := range args[1:] {
+		y, _ := strconv.Atoi(arg.(reader.Token).String())
+		x /= y
+	}
+	return x
+}

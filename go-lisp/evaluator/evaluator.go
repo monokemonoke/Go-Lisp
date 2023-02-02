@@ -26,6 +26,8 @@ func NewFuncMap() map[string]Func {
 	m := make(map[string]Func)
 	m["+"] = add
 	m["-"] = minus
+	m["*"] = multi
+	m["/"] = div
 	return m
 }
 
