@@ -25,6 +25,7 @@ type Func func(args []any) any
 func NewFuncMap() map[string]Func {
 	m := make(map[string]Func)
 	m["+"] = add
+	m["-"] = minus
 	return m
 }
 
