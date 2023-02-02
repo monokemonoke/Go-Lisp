@@ -13,13 +13,13 @@ type Parser struct {
 
 type Node interface{}
 
-type nodeAtom struct {
-	value any
+type NodeAtom struct {
+	Value any
 }
 
-type nodeExp struct {
-	operand string
-	args    []Node
+type NodeExp struct {
+	Operand string
+	Args    []Node
 }
 
 func NewParser(tokens []reader.Token) *Parser {
@@ -32,12 +32,12 @@ func NewParser(tokens []reader.Token) *Parser {
 func (p *Parser) Parse() any {
 	top, _ := p.seek()
 	if top != reader.Token("(") {
-		return nodeAtom{value: top}
+		return NodeAtom{Value: top}
 	}
 
-	var ast nodeExp
+	var ast NodeExp
 	opToken, _ := p.seek()
-	ast.operand = string(opToken)
+	ast.Operand = string(opToken)
 
 	for {
 		token, _ := p.seek()
@@ -48,9 +48,9 @@ func (p *Parser) Parse() any {
 		switch token {
 		case "(":
 			p.position--
-			ast.args = append(ast.args, p.Parse())
+			ast.Args = append(ast.Args, p.Parse())
 		default:
-			ast.args = append(ast.args, nodeAtom{value: token})
+			ast.Args = append(ast.Args, NodeAtom{Value: any(token)})
 		}
 	}
 }

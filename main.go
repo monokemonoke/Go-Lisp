@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/monokemonoke/go-lisp/go-lisp/evaluator"
 	"github.com/monokemonoke/go-lisp/go-lisp/parser"
 	"github.com/monokemonoke/go-lisp/go-lisp/reader"
 )
@@ -27,5 +28,8 @@ func main() {
 		asts := p.Parse()
 		fmt.Printf("asts\n")
 		fmt.Printf("%#v\n", asts)
+
+		res := evaluator.Eval(asts)
+		fmt.Printf("%#v\n", res)
 	}
 }

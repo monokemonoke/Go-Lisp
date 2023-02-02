@@ -4,6 +4,10 @@ import "strings"
 
 type Token string
 
+func (t Token) String() string {
+	return string(t)
+}
+
 type Reader interface {
 	Read() []Token
 }
